@@ -1,0 +1,59 @@
+
+<div class="container">
+  <div class="alert alert-danger" *ngIf="mode==1">
+    <strong>Erreur  !</strong> Username ou le mot de passe est invalid.
+  </div>
+
+</div>
+<!--
+<div class="container">
+  <div class="alert alert-danger" *ngIf="mode==2">
+    <strong>Erreur  !</strong> Remplir les champs vides.
+  </div>
+
+</div>-->
+<div class="col-md-6">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      Authentification
+    </div>
+
+    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+      <div class="form-group">
+        <label class="control-label" >Username</label>
+        <input type="text" id="username" name="username" ngModel=""  class="form-control" required #username="ngModel"   />
+        <div class="alert alert-danger" *ngIf="!username.valid">
+          Username Obligatoire
+
+
+        </div>
+      </div>
+
+
+
+
+
+      <div class="form-group">
+        <label class="control-label">Password</label>
+        <input type="password" id="password" name="password" ngModel="" class="form-control" required="" [minLength]="4" #password="ngModel"/>
+
+        <div class="alert alert-danger" *ngIf=" !password.valid">
+          Mot de passe est obligatoire
+
+
+        </div>
+      </div>
+
+
+      <button type="submit" class="btn btn-info">
+        Se connecter
+
+      </button>
+
+    </form>
+
+
+  </div>
+
+</div>

@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#"> <strong>Gestion des produits</strong>  </a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li class="active"><a href="#"> Home </a></li>
+      <li class="dropdown" *ngIf="isAuthenticated()">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">admin
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li  *ngIf="isAdmin()"><a routerLink="/adminCategories"> Gestion des catégories </a></li>
+          <li  *ngIf="isUser()"><a routerLink="/adminProducts">Gestion des produits </a></li>
+          <li *ngIf="isAdmin()"><a routerLink="/adminUsers">Gestion des utilisateurs </a></li>
+        </ul>
+      </li>
+  <!--    <li><a href="#">Page 2</a></li>
+      <li><a href="#">Page 3</a></li> -->
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a routerLink="/register" (click)="onRegister()"  *ngIf="!isAuthenticated()" href="#"><span class="glyphicon glyphicon-user"></span>  s'enregistrer </a></li>
+      <li><a routerLink="/login" *ngIf="!isAuthenticated()"><span class="glyphicon glyphicon-log-in"></span> se connecter </a></li>
+      <li><a  class="btn" *ngIf="isAuthenticated()" (click)="logOut()" href="#"><span class="glyphicon glyphicon-log-out"></span> se déconnecter </a></li>
+
+    </ul>
+  </div>
+</nav>
+<div class="row">
+  <div class="col-md-2">
+<app-categories></app-categories>
+  </div>
+<div class="col-md-9">
+  <router-outlet>
+
+
+  </router-outlet>
+
+</div>
+</div>
